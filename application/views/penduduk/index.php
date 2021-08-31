@@ -23,11 +23,11 @@
                             <input type="text" class="form-control" id="alamat" placeholder="alamat" name="alamat">
                             <?= form_error('alamat', '<div class="text-danger">', '</div>'); ?>
                         </div>
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label for="kodepos">Kode pos</label>
                             <input type="text" class="form-control" id="kodepos" placeholder="Kode pos" name="kodepos">
                             <?= form_error('kodepos', '<div class="text-danger">', '</div>'); ?>
-                        </div> -->
+                        </div>
                         <div class="form-group">
                             <label for="ttl">Tempat lahir</label>
                             <input type="text" class="form-control" id="ttl" placeholder="Tempat lahir" name="ttl">

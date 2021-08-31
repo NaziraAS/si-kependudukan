@@ -17,7 +17,7 @@ class Penduduk extends CI_Controller
             $this->form_validation->set_rules('nik', 'Nik', 'required');
             $this->form_validation->set_rules('nama', 'Nama', 'required');
             $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-            // $this->form_validation->set_rules('kodepos', 'kodepos', 'required');
+            $this->form_validation->set_rules('kodepos', 'kodepos', 'required');
             $this->form_validation->set_rules('ttl', 'Tempat', 'required');
             $this->form_validation->set_rules('tgl', 'Tanggal', 'required');
             $this->form_validation->set_rules('agama', 'Agama', 'required');

@@ -31,7 +31,7 @@
                                 <th scope="col" colspan="2">Tempat lahir</th>
                                 <th scope="col" colspan="2">Tgl. lahir</th>
                                 <th scope="col">Agama</th>
-                                <!-- <th scope="col" colspan="3">Status perkawinan</th> -->
+                                <th scope="col">Status perkawinan</th>
                                 <th scope="col">Pekerjaan</th>
                                 <th scope="col">Pendidikan</th>
                                 <th scope="col" colspan="3">Golongan Darah</th>
@@ -54,10 +54,10 @@
                                     <td scope="col" colspan="2"><?= $p['tempat_lahir'] ?></td>
                                     <td scope="col" colspan="2"><?= $p['tgl_lahir'] ?></td>
                                     <td scope="col"><?= $p['agama'] ?></td>
+                                    <td scope="col" colspan="3"><?= $p['status_perkawinan'] ?></td>
                                     <td scope="col"><?= $p['pekerjaan'] ?></td>
                                     <td scope="col"><?= $p['pendidikan'] ?></td>
                                     <!-- <td scope="col">SMA</td> -->
-                                    <td scope="col" colspan="3">A</td>
                                     <td scope="col" colspan="2"><?= $p['jenis_kelamin'] ?></td>
                                     <td scope="col" colspan="2"><?= $p['nama_ayah'] ?></td>
                                     <td scope="col" colspan="2"><?= $p['nama_ibu'] ?></td>

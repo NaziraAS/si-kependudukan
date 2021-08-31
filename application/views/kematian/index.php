@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tgl">Tanggal</label>
-                            <input type="date" class="form-control" id="tgl" placeholder="tgl" name="tgl">
+                            <input type="date" class="form-control" id="tgl" placeholder="tgl" max="<?= date('Y-m-d') ?>" name="tgl">
                             <?= form_error('tgl', '<div class="text-danger">', '</div>') ?>
                         </div>
                         <div class="form-group">
