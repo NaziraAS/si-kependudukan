@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Agu 2021 pada 19.40
+-- Waktu pembuatan: 08 Sep 2021 pada 19.02
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.7
 
@@ -53,7 +53,7 @@ CREATE TABLE `kelahiran` (
   `nama_bayi` varchar(50) NOT NULL,
   `jenis_kelamin` enum('Laki-laki','Perempuan','','') NOT NULL,
   `tgl_lahir` date NOT NULL,
-  `jam` int(2) NOT NULL,
+  `jam` time NOT NULL,
   `tempat_lahir` varchar(50) NOT NULL,
   `tempat_dilahirkan` enum('RS','Rumah','Puskesmas','') NOT NULL,
   `kelahiran_ke` int(2) NOT NULL,
@@ -69,9 +69,7 @@ CREATE TABLE `kelahiran` (
 --
 
 INSERT INTO `kelahiran` (`id_kelahiran`, `nama_bayi`, `jenis_kelamin`, `tgl_lahir`, `jam`, `tempat_lahir`, `tempat_dilahirkan`, `kelahiran_ke`, `berat`, `panjang`, `nik_ibu`, `nik_ayah`, `nik_pelapor`) VALUES
-(5, 'andre', 'Laki-laki', '2021-08-09', 3, 'banten', 'RS', 1, 3, 1, '29374987', '894792874', '8923749823'),
-(6, 'lili', 'Perempuan', '2021-08-09', 4, 'lmapung', 'Puskesmas', 4, 4, 4, '9237498237', '405049', '03948509384'),
-(7, 'sdhfkj', 'Laki-laki', '2021-08-09', 3, 'kjshdfjh', 'RS', 3, 3, 3, '87349878', '8749509', '09804934');
+(10, 'andre', 'Laki-laki', '2021-08-30', '01:30:00', 'jogja', 'RS', 1, 3, 4, '2938749872', '92837492837', '2938749872');
 
 -- --------------------------------------------------------
 
@@ -81,13 +79,14 @@ INSERT INTO `kelahiran` (`id_kelahiran`, `nama_bayi`, `jenis_kelamin`, `tgl_lahi
 
 CREATE TABLE `kematian` (
   `id_kematian` int(11) NOT NULL,
-  `nik` int(11) NOT NULL,
+  `nik` bigint(20) NOT NULL,
   `hari` enum('Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu') NOT NULL,
   `tgl_kematian` date NOT NULL,
-  `jam` varchar(2) NOT NULL,
+  `jam` time NOT NULL,
   `tempat_kematian` varchar(32) NOT NULL,
-  `anak_ke` varchar(11) NOT NULL,
+  `umur` int(11) NOT NULL,
   `sebab_kematian` enum('Sakit Biasa/Tua','Wabah penyakit','Kecelakaan','') NOT NULL,
+  `status` varchar(30) NOT NULL,
   `nik_ayah` varchar(50) NOT NULL,
   `nik_ibu` varchar(50) NOT NULL,
   `nik_saksi` varchar(50) NOT NULL,
@@ -98,9 +97,8 @@ CREATE TABLE `kematian` (
 -- Dumping data untuk tabel `kematian`
 --
 
-INSERT INTO `kematian` (`id_kematian`, `nik`, `hari`, `tgl_kematian`, `jam`, `tempat_kematian`, `anak_ke`, `sebab_kematian`, `nik_ayah`, `nik_ibu`, `nik_saksi`, `nik_pelapor`) VALUES
-(7, 2147483647, 'Sabtu', '2021-08-09', '3', 'rumah', '1', 'Kecelakaan', '987349487', '92387489', '0340895897', '93487543'),
-(8, 2147483647, '', '2021-08-08', '5', 'rumah', '3', 'Kecelakaan', '94985798', '237868', '9879345', '423423');
+INSERT INTO `kematian` (`id_kematian`, `nik`, `hari`, `tgl_kematian`, `jam`, `tempat_kematian`, `umur`, `sebab_kematian`, `status`, `nik_ayah`, `nik_ibu`, `nik_saksi`, `nik_pelapor`) VALUES
+(17, 92837492837, 'Senin', '2021-09-07', '22:00:00', 'rumah', 0, 'Sakit Biasa/Tua', 'Meninggal', '92837492837', '92837492837', '92837492837', '92837492837');
 
 -- --------------------------------------------------------
 
@@ -161,15 +159,8 @@ CREATE TABLE `pdatang` (
   `nama` varchar(32) NOT NULL,
   `tgl` date DEFAULT NULL,
   `alamat_asal` varchar(32) NOT NULL,
-  `alamat_tujuan` varchar(32) NOT NULL
+  `nomor_surat` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `pdatang`
---
-
-INSERT INTO `pdatang` (`id`, `nik`, `nama`, `tgl`, `alamat_asal`, `alamat_tujuan`) VALUES
-(8, '1000007', 'dani', '2021-08-23', 'jakarta', 'surabaya');
 
 -- --------------------------------------------------------
 
@@ -183,6 +174,7 @@ CREATE TABLE `penduduk` (
   `alamat` varchar(50) NOT NULL,
   `tempat_lahir` varchar(50) NOT NULL,
   `tgl_lahir` date NOT NULL,
+  `kode_pos` int(11) NOT NULL,
   `agama` enum('Islam','Budha','Katolik','Kristen','Konghucu','Hindu','Protestan') NOT NULL,
   `status_perkawinan` enum('Lajang','Menikah','Cerai Hidup','Cerai Mati') NOT NULL,
   `pekerjaan` enum('Wirausaha','Nelayan','Petani','Pedagang','Karyawan','Buruh','PNS') NOT NULL,
@@ -197,9 +189,8 @@ CREATE TABLE `penduduk` (
 -- Dumping data untuk tabel `penduduk`
 --
 
-INSERT INTO `penduduk` (`nik`, `nama`, `alamat`, `tempat_lahir`, `tgl_lahir`, `agama`, `status_perkawinan`, `pekerjaan`, `pendidikan`, `golongan_darah`, `jenis_kelamin`, `nama_ayah`, `nama_ibu`) VALUES
-(2938749872, 'dina', 'bandung', 'bandung', '2021-08-09', 'Islam', 'Menikah', '', '', 'A', 'Perempuan', 'reza', 'titik'),
-(92837492837, 'dani', 'jakarta', 'jakarta', '2021-08-08', 'Islam', 'Lajang', 'PNS', 'DI', 'A', 'Laki-laki', 'bayu', 'aminah');
+INSERT INTO `penduduk` (`nik`, `nama`, `alamat`, `tempat_lahir`, `tgl_lahir`, `kode_pos`, `agama`, `status_perkawinan`, `pekerjaan`, `pendidikan`, `golongan_darah`, `jenis_kelamin`, `nama_ayah`, `nama_ibu`) VALUES
+(2938492349, 'atang', 'gerantung', 'sdfsdf', '2021-09-09', 598695, 'Islam', 'Menikah', 'Petani', 'SMP', 'A', 'Laki-laki', 'sdfsdfdfsdf', 'dasd');
 
 -- --------------------------------------------------------
 
@@ -213,15 +204,17 @@ CREATE TABLE `ppindah` (
   `tgl` date NOT NULL,
   `nama` varchar(32) NOT NULL,
   `alamat_asal` varchar(32) NOT NULL,
-  `alamat_tujuan` varchar(32) NOT NULL
+  `alamat_tujuan` varchar(32) NOT NULL,
+  `nomor_surat` varchar(30) NOT NULL,
+  `alasan` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `ppindah`
 --
 
-INSERT INTO `ppindah` (`id`, `nik`, `tgl`, `nama`, `alamat_asal`, `alamat_tujuan`) VALUES
-(7, '29384923490', '2021-08-23', 'atang sasmita', 'lombok', 'jakarta');
+INSERT INTO `ppindah` (`id`, `nik`, `tgl`, `nama`, `alamat_asal`, `alamat_tujuan`, `nomor_surat`, `alasan`) VALUES
+(8, '2938492349', '2021-08-31', 'dani', 'lombok', 'banyuwangi', '1000009', 'tidak betah');
 
 --
 -- Indexes for dumped tables
@@ -295,13 +288,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `kelahiran`
 --
 ALTER TABLE `kelahiran`
-  MODIFY `id_kelahiran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_kelahiran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `kematian`
 --
 ALTER TABLE `kematian`
-  MODIFY `id_kematian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_kematian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `kepala_desa`
@@ -331,7 +324,7 @@ ALTER TABLE `pdatang`
 -- AUTO_INCREMENT untuk tabel `ppindah`
 --
 ALTER TABLE `ppindah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
