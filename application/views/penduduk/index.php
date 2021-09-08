@@ -25,8 +25,8 @@
                         </div>
                         <div class="form-group">
                             <label for="kodepos">Kode pos</label>
-                            <input type="text" class="form-control" id="kodepos" placeholder="Kode pos" name="kodepos">
-                            <?= form_error('kodepos', '<div class="text-danger">', '</div>'); ?>
+                            <input type="text" class="form-control" id="kodepos" placeholder="Kode pos" name="kode_pos">
+                            <?= form_error('kode_pos', '<div class="text-danger">', '</div>'); ?>
                         </div>
                         <div class="form-group">
                             <label for="ttl">Tempat lahir</label>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tgl">Tanggal lahir</label>
-                            <input type="date" class="form-control" id="tgl" placeholder="Tanggal lahir" name="tgl">
+                            <input type="date" class="form-control" id="tgl" min="1950-01-01" placeholder="Tanggal lahir" name="tgl">
                             <?= form_error('tgl', '<div class="text-danger">', '</div>'); ?>
                         </div>
                         <div class="form-group">

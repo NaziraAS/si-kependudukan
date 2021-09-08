@@ -17,9 +17,9 @@ class Penduduk extends CI_Controller
             $this->form_validation->set_rules('nik', 'Nik', 'required');
             $this->form_validation->set_rules('nama', 'Nama', 'required');
             $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-            $this->form_validation->set_rules('kodepos', 'kodepos', 'required');
             $this->form_validation->set_rules('ttl', 'Tempat', 'required');
             $this->form_validation->set_rules('tgl', 'Tanggal', 'required');
+            $this->form_validation->set_rules('kode_pos', 'Kode pos', 'required');
             $this->form_validation->set_rules('agama', 'Agama', 'required');
             $this->form_validation->set_rules('status', 'Status', 'required');
             $this->form_validation->set_rules('pekerjaan', 'pekerjaan', 'required');
@@ -50,6 +50,8 @@ class Penduduk extends CI_Controller
         } else if ($this->session->userdata('username') && $this->session->userdata('level') == 'admin') {
             $data['privilage'] = $this->session->userdata('username');
             $data['penduduk'] = $this->penduduk->getAll();
+            // var_dump($data['penduduk']);
+            // die;
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar');

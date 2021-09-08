@@ -29,6 +29,7 @@
                                 <th scope="col">Tempat</th>
                                 <th scope="col">Umur</th>
                                 <th scope="col">Sebab kematian</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Nik ibu</th>
                                 <th scope="col">Nik ayah</th>
                                 <th scope="col">Nik saksi</th>
@@ -50,6 +51,7 @@
                                     <td scope="col"><?= $k['tempat_kematian'] ?></td>
                                     <td scope="col"><?= $k['umur'] ?></td>
                                     <td scope="col"><?= $k['sebab_kematian'] ?></td>
+                                    <td scope="col"><?= $k['status'] ?></td>
                                     <td scope="col"><?= $k['nik_ayah'] ?></td>
                                     <td scope="col"><?= $k['nik_ibu'] ?></td>
                                     <td scope="col"><?= $k['nik_saksi'] ?></td>

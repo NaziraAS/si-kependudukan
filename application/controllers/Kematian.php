@@ -21,6 +21,7 @@ class kematian extends CI_Controller
             $this->form_validation->set_rules('jam', 'jam', 'required');
             $this->form_validation->set_rules('tempatkematian', 'Tempat kematian', 'required');
             $this->form_validation->set_rules('umur', 'Umur', 'required');
+            $this->form_validation->set_rules('status_kematian', 'Status', 'required');
             $this->form_validation->set_rules('sebabkematian', 'Sebab kematian', 'required');
             $this->form_validation->set_rules('nikibu', 'Nik ibu', 'required');
             $this->form_validation->set_rules('nikayah', 'Nik ayah', 'required');

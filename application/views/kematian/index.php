@@ -65,6 +65,13 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="status_kematian">Status</label>
+                            <select class="form-control" id="status_kematian" name="status_kematian">
+                                <option selected>-- Pilih --</option>
+                                <option value="Meninggal">Meninggal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="nikibu">Nik ibu</label>
                             <input type="text" class="form-control" id="nikibu" autocomplete="off" name="nikibu">
                             <ul class="list-group" id="resultibu"></ul>
